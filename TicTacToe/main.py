@@ -8,18 +8,25 @@ def draw_board(board):
 	print("-------")
 def get_not_valid(message):
 	returnable=None
-	while(returnable!="X" and returnable!="O"):
+	while(True):
 		returnable=input(message).upper()
+		if(returnable=="X" or returnable=="O"):
+			break
 	return returnable
 def set_piece(board, player_val):
 	print(player_val+"'s Turn")
-	row=int(input("Row:"))
-	column=int(input("Column:"))
-	print(board[row-1][column-1]!=" ")
-	while(board[row-1][column-1]!=" "):
-		row=int(input("Row:"))
-		column=int(input("Column:"))
-	board[row-1][column-1]=player_val
+	while(True):
+		while(True):
+			row=int(input("Row:"))
+			if(row in range(1,4)):
+				break;
+		while(True):
+			col=int(input("Col:"))
+			if(col in range(1,4)):
+				break;
+		if(board[row-1][col-1]==" "):
+			break;
+	board[row-1][col-1]=player_val
 	return board
 def switch_player(player):
 	if(player=="X"):
