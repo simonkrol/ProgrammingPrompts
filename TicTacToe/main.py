@@ -12,8 +12,10 @@ def get_not_valid(message):
 		returnable=input(message).upper()
 	return returnable
 def set_piece(board, player_val):
+	print(player_val+"'s Turn")
 	row=int(input("Row:"))
 	column=int(input("Column:"))
+	print(board[row-1][column-1]!=" ")
 	while(board[row-1][column-1]!=" "):
 		row=int(input("Row:"))
 		column=int(input("Column:"))
@@ -30,8 +32,6 @@ def turn(board, player_val):
 	draw_board(board)
 	return win
 def check_winner(bo, le):
- # Given a board and a player’s letter, this function returns True if that player has won.
- # We use bo instead of board and le instead of letter so we don’t have to type as much.
 	return ((bo[2][0] == le and bo[2][1] == le and bo[2][2] == le) or # across the top
 	(bo[1][0] == le and bo[1][1] == le and bo[1][2] == le) or # across the middle
 	(bo[0][0] == le and bo[0][1] == le and bo[0][2] == le) or # across the bottom
@@ -45,7 +45,6 @@ curr_turn=get_not_valid("Which token should play first?")
 board=[[" " for x in range(3)] for y in range(3)] 
 print(board)
 draw_board(board)
-set_piece(board, curr_turn)
 for turn_num in range(9):
 	result=turn(board, curr_turn)
 	if(result):
