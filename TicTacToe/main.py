@@ -22,7 +22,7 @@ def set_piece(board, player_val):
 				break;
 		while(True):
 			col=int(input("Col:"))
-			if(col in range(1,4)):
+			if(col in range(1,4	)):
 				break;
 		if(board[row-1][col-1]==" "):
 			break;
@@ -33,11 +33,13 @@ def switch_player(player):
 		return "O"
 	else:
 		return "X"
-def turn(board, player_val):
+def player_turn(board, player_val):
 	set_piece(board, player_val)
 	win=check_winner(board, player_val)
 	draw_board(board)
 	return win
+def comp_turn(board,player_val):
+	return false#Where computer code goes
 def check_winner(bo, le):
 	return ((bo[2][0] == le and bo[2][1] == le and bo[2][2] == le) or # across the top
 	(bo[1][0] == le and bo[1][1] == le and bo[1][2] == le) or # across the middle
@@ -53,7 +55,10 @@ board=[[" " for x in range(3)] for y in range(3)]
 print(board)
 draw_board(board)
 for turn_num in range(9):
-	result=turn(board, curr_turn)
+	if(curr_turn==player_turn):
+		result=player_turn(board, curr_turn)
+	else:
+		result=comp_turn(board,curr_turn)
 	if(result):
 		print(curr_turn +" has won!")
 		break;
